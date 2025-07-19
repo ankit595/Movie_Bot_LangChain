@@ -14,11 +14,7 @@ from langchain_core.messages import HumanMessage
 def format_response(response, openai_api_key):
     llm = ChatOpenAI(
         model="gpt-4o-mini",
-        temperature=0,
-        openai_api_base="https://llm-proxy-api.ai.eng.netapp.com",
-        openai_api_key=openai_api_key,
-        model_kwargs={'user': "ak16683"},
-        http_client=httpx.Client(verify=False)
+        temperature=0
     )
 
     prompt = f"Format the following response in a clean, plain text manner suitable for display in a UI and describe everything a little as per the answer don't mention that you are formatting this. Ensure the output is simple and readable:\n{response}"
@@ -30,11 +26,7 @@ def format_response(response, openai_api_key):
 def web_search(question, openai_api_key):
     llm = ChatOpenAI(
         model="gpt-4o-mini",
-        temperature=0,
-        openai_api_base="https://llm-proxy-api.ai.eng.netapp.com",
-        openai_api_key=openai_api_key,
-        model_kwargs={'user': "ak16683"},
-        http_client=httpx.Client(verify=False)
+        temperature=0
     )
 
     prompt = f"You are a movie expert so answer the question :\n{question}"
@@ -85,34 +77,3 @@ def answer_question(question, config, swarm_memory):
     return formatted_response
 
 
-# config = {
-#     "openai_api_key": "sk_986e96a6aa3c463da735f7e1cefc345a8e3f33f0fa2c33a00e4b879c9b7a6f44",
-#      "sqlite_path": "os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'db', 'movies.sqlite'))",
-#     "neo4j_uri": "neo4j://localhost:7687",
-#     "neo4j_username": "neo4j",
-#     "neo4j_password": "projectdatabase",
-# }
-#
-# def init_system():
-#     # Initialize and return the swarm memory or any other system setup required
-#     return {}
-#
-#
-# # ui/app.py
-# import os
-# from langchain_setup import init_system
-# from orchestrator import answer_question
-#
-#
-# def main():
-#     swarm_memory = init_system()
-#     question = "What are recent drama movies in 2023?"
-#     answer = answer_question(question, config, swarm_memory)
-#
-#     print("### Specific Question")
-#     print(f"You: {question}")
-#     print(f"Bot: {answer}")
-#
-#
-# if __name__ == "__main__":
-#     main()
