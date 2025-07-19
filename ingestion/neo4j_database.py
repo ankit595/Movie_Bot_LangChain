@@ -4,7 +4,7 @@ import pandas as pd
 def create_movie_graph():
     try:
         # Connect to Neo4j
-        graph = Graph("neo4j://127.0.0.1:7687", auth=("neo4j", "projectdatabase"))  # user, password
+        graph = Graph("url", auth=("username", "password"))  # user, password
 
         # Load CSV
         df = pd.read_csv('../data/movies.csv')
