@@ -59,10 +59,6 @@ def route_question(question, config):
     llm = ChatOpenAI(
         model="gpt-4o-mini",
         temperature=0,
-        openai_api_base="https://llm-proxy-api.ai.eng.netapp.com",
-        openai_api_key=config["openai_api_key"],  # Use the provided API key
-        model_kwargs={'user': "ak16683"},
-        http_client=http_client
     )
 
     prompt = f"""Classify this question as ['neo4j', 'sqlite', 'both'] based on the following schema information and whether it requires relationship/graph data, direct table lookup, or both:
