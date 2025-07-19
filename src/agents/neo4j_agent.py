@@ -15,10 +15,6 @@ def get_neo4j_agent(openai_api_key, uri, username, password):
     llm = ChatOpenAI(
         model="gpt-4o-mini",
         temperature=0,
-        openai_api_base="https://llm-proxy-api.ai.eng.netapp.com",
-        openai_api_key=openai_api_key,
-        model_kwargs={'user': "ak16683"},
-        http_client=http_client
     )
 
     def retrieve(question):
@@ -102,9 +98,5 @@ Only return the Cypher query. Do not include any explanation or formatting.
     # Example usage
 
 
-# openai_api_key = "sk_986e96a6aa3c463da735f7e1cefc345a8e3f33f0fa2c33a00e4b879c9b7a6f44"  # Use environment variable for safety
-# uri = "neo4j://localhost:7687"
-# username = "neo4j"
-# password = "projectdatabase"
 #
 # get_neo4j_agent(openai_api_key, uri, username, password)("scifi movies with high ratings")
